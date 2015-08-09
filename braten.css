@@ -1,0 +1,55 @@
+html, body { font-family: sans-serif; height: 100%; margin: 0; }
+#box { display: flex; flex-direction: column; height: 100%; }
+h1, h3 { text-align: center; flex: 0 0 auto; }
+
+a, .counter .num { color: #f80; }
+#control .google-visualization-controls-slider-thumb, #control .google-visualization-controls-slider-handle {
+ background-color: #f80;
+}
+#control .google-visualization-controls-slider-thumb:hover {
+ background-color: #f00;
+}
+
+a { text-decoration: none; }
+#counterblock { width: 620px; margin: 0 auto; flex: 0 0 auto; }
+.counter {
+ width: 71px; height: 96px;
+ overflow: hidden; float: left;
+}
+.counter .bg {
+ background: url('bg.png') no-repeat;
+ width: 71px; height: 96px;
+ position: absolute; z-index: 100;
+}
+.counter .num {
+ width: 71px;
+ font-size: 65pt;
+ text-align: center;
+ font-weight: bold;
+}
+.counter .num .zero.forlater {
+ color: #F00;
+}
+#charts { flex: 1 0 400px; display: flex; flex-direction: row-reverse; width: 100%; height: 100%; margin: 2em 0; }
+.chartspacer { flex: 1 7 10px; }
+.chartspacermid { flex: 0 3 100px; }
+#mapholder { flex: 1 1 600px; overflow: hidden; position: relative; }
+#map { height: 100%; width: 3000px; position: absolute; }
+#trendholder { flex: 1 1 600px; display: flex; flex-direction: column; }
+#trend { flex: 1 1 auto; }
+#control { flex: 0 0 auto; }
+#control .charts-inline-block { width: 100%; display: flex; flex-direction: row; }
+#control .google-visualization-controls-rangefilter-thumblabel { flex: 0 0 auto; }
+#control .google-visualization-controls-slider-horizontal { flex: 1 0 200px; border-color: #000; }
+#control .google-visualization-controls-slider-thumb { width: 5px; border-color: #000; }
+#control .google-visualization-controls-slider-thumb:hover { border-color: #000; }
+#footer { text-align: center; width: 100%; font-size: small; flex: 0 0 auto; }
+
+/* Medium screens */
+@media all and (max-width: 800px) {
+ #charts { display: block; margin: 1em 0; height: auto; }
+ #mapholder, #map, #trend { width: 100%; height: auto; flex: 0 0 auto; }
+ #map { height: auto; position: static; } 
+ .chartspacer, .chartspacermid { width: 100%; height: 1em; }
+}
+

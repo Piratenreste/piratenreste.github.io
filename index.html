@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head>
+ <title>Piratenmitglieder</title>
+ <link rel="stylesheet" type="text/css" href="braten.css">
+ <script type="text/javascript" src="https://www.google.com/jsapi?autoload={
+	modules: [{ name: 'visualization', version: '1',
+	language: 'de', packages:['corechart', 'geochart', 'controls'] }] }"></script>
+ <script type="text/javascript" src="estimate.js"></script>
+</head>
+<body><div id="box">
+ <h1>Wieviele Mitglieder hat die Piratenpartei Deutschland?</h1>
+ <div id="counterblock">
+  <div class="counter" id="d1"><div class="bg"></div>
+   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
+  </div><div class="counter" id="d2"><div class="bg"></div>
+   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
+  </div><div class="counter" id="d3"><div class="bg"></div>
+   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
+  </div><div class="counter" id="d4"><div class="bg"></div>
+   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
+  </div><div class="counter" id="d5"><div class="bg"></div>
+   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
+  </div><div class="counter" style="font-size:80px; width: auto;">,
+  </div><div class="counter" id="d6" style="opacity: 0.6"><div class="bg"></div>
+   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
+  </div><div class="counter" id="d7" style="opacity: 0.6"><div class="bg"></div>
+   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
+  </div><div class="counter" id="d8" style="opacity: 0.6"><div class="bg"></div>
+   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
+  </div>
+ </div>
+ <h3><a href="http://blog.uxp.de/">Konsolidierung in Echtzeit.</a></h3>
+ <div id="charts">
+  <div class="chartspacer"></div>
+  <div id="trendholder"><div id="trend"></div><div id="control"></div></div>
+  <div class="chartspacermid"></div>
+  <div id="mapholder"><div id="map"></div></div>
+  <div class="chartspacer"></div>
+ </div>
+ <script type="text/javascript" src="braten.js"></script>
+ <p id="footer">basierend auf der Entwicklung der <a href="http://finanzen.piratenpartei.de/statistik.php">Mitgliederzahlen</a> in den letzten 30 Tagen</p>
+</div>
+</body></html>
