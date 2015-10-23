@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html><head>
+ <meta charset="UTF-8">
  <title>Piratenmitglieder</title>
  <link rel="stylesheet" type="text/css" href="braten.css">
- <script type="text/javascript" src="https://www.google.com/jsapi?autoload={
-	modules: [{ name: 'visualization', version: '1',
-	language: 'de', packages:['corechart', 'geochart', 'controls'] }] }"></script>
- <script type="text/javascript" src="estimate.js"></script>
+ <script src="d3.3.5.6.min.js" charset="utf-8"></script>
+ <style>.area { clip-path: url(#clip); }</style>
 </head>
 <body><div id="box">
- <h1>Wieviele Mitglieder hat die Piratenpartei Deutschland?</h1>
+ <h1 id="caption">Wieviele <span id="plotcontext">Mitglieder</span> hat die Piratenpartei Deutschland?<span style="font-size:60%; vertical-align:top; font-weight:normal">*</span></h1>
  <div id="counterblock">
   <div class="counter" id="d1"><div class="bg"></div>
    <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
@@ -31,12 +30,36 @@
  </div>
  <div id="charts">
   <div class="chartspacer"></div>
-  <div id="trendholder"><div id="trend"></div><div id="control"></div></div>
+  <div id="trendholder"><div id="trend" class='with-3d-shadow with-transitions'><svg></svg></div></div>
   <div class="chartspacermid"></div>
-  <div id="mapholder"><div id="map"></div></div>
+  <div id="ctrlholder">
+    <span class="ctrl selected" id="ctrl-M">&#9817;</span>
+	<span class="ctrl" id="ctrl-S" style="margin-right:0.5em; padding: 3px 13px;">&euro;</span>
+    <span class="ctrl selected" id="ctrl-D" style="padding: 3px 10px;">&#8764;</span>
+	<span class="ctrl" id="ctrl-E" style="padding: 3px 10px;">&#8771;</span>
+    <p id="Bundesverband" class="bar selected" style="margin-top: 0.2em;">Bundesverband</p>
+    <p id="DE-BW">Baden-Württemberg</p>
+	<p id="DE-BY">Bayern</p>
+	<p id="DE-BE">Berlin</p>
+	<p id="DE-BB">Brandenburg</p>
+	<p id="DE-HB">Bremen</p>
+	<p id="DE-HH">Hamburg</p>
+	<p id="DE-HE">Hessen</p>
+	<p id="DE-MV">Mecklenburg-Vorpommern</p>
+	<p id="DE-NI">Niedersachsen</p>
+	<p id="DE-NW">Nordrhein-Westfalen</p>
+	<p id="DE-RP">Rheinland-Pfalz</p>
+	<p id="DE-SL">Saarland</p>
+	<p id="DE-SN">Sachsen</p>
+	<p id="DE-ST">Sachsen-Anhalt</p>
+	<p id="DE-SH">Schleswig-Holstein</p>
+	<p id="DE-TH" class="bar">Thüringen</p>
+	<p id="Ausland">Ausland</p>
+  </div>
   <div class="chartspacer"></div>
  </div>
+ <script>window.plotSelection = "MBundesverband";</script>
  <script type="text/javascript" src="braten.js"></script>
- <p id="footer">basierend auf der Entwicklung der <a href="http://finanzen.piratenpartei.de/statistik.php">Mitgliederzahlen</a> in den letzten 30 Tagen</p>
+ <p id="footer">*basierend auf der Entwicklung der <a href="http://finanzen.piratenpartei.de/statistik.php">Mitgliederzahlen</a> der letzten 30 Tage</p>
 </div>
 </body></html>
