@@ -1,65 +1,73 @@
 <!DOCTYPE html>
 <html><head>
  <meta charset="UTF-8">
+ <meta name="viewport" content="initial-scale=0.6, maximum-scale=1, user-scalable=no, width=device-width">
  <title>Piratenmitglieder</title>
- <link rel="stylesheet" type="text/css" href="braten.css">
- <script src="d3.3.5.6.min.js" charset="utf-8"></script>
+ <link rel="stylesheet" type="text/css" href="lib/ionic-1.1.1/css/ionic.css">
+ <link rel="stylesheet" type="text/css" href="css/braten.css">
  <style>.area { clip-path: url(#clip); }</style>
-</head>
-<body><div id="box">
- <h1 id="caption">Wieviele <span id="plotcontext">Mitglieder</span> hat die Piratenpartei Deutschland?<span style="font-size:60%; vertical-align:top; font-weight:normal">*</span></h1>
- <div id="counterblock">
-  <div class="counter" id="d1"><div class="bg"></div>
-   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
-  </div><div class="counter" id="d2"><div class="bg"></div>
-   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
-  </div><div class="counter" id="d3"><div class="bg"></div>
-   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
-  </div><div class="counter" id="d4"><div class="bg"></div>
-   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
-  </div><div class="counter" id="d5"><div class="bg"></div>
-   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
-  </div><div class="counter" style="font-size:80px; width: auto;">,
-  </div><div class="counter" id="d6" style="opacity: 0.6"><div class="bg"></div>
-   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
-  </div><div class="counter" id="d7" style="opacity: 0.6"><div class="bg"></div>
-   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
-  </div><div class="counter" id="d8" style="opacity: 0.6"><div class="bg"></div>
-   <div class="num"><span class="zero">0</span><br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><span class="zero">0</span></div>
-  </div>
+</head><body>
+<div id="left-nav">
+ <div class="title">Piratenmitglieder</div>
+ <div class="button-bar">
+  <a class="button icon-left selected ion-person-stalker" id="A:2" href="#//A">Alle</a>
+  <a class="button icon-left ion-card" id="Z:2" href="#//Z" tag="zahlende">Zahlend</a>
  </div>
- <div id="charts">
-  <div class="chartspacer"></div>
-  <div id="trendholder"><div id="trend" class='with-3d-shadow with-transitions'><svg></svg></div></div>
-  <div class="chartspacermid"></div>
-  <div id="ctrlholder">
-    <span class="ctrl selected" id="ctrl-M">&#9817;</span>
-	<span class="ctrl" id="ctrl-S" style="margin-right:0.5em; padding: 3px 13px;">&euro;</span>
-    <span class="ctrl selected" id="ctrl-D" style="padding: 3px 10px;">&#8764;</span>
-	<span class="ctrl" id="ctrl-E" style="padding: 3px 10px;">&#8771;</span>
-    <p id="Bundesverband" class="bar selected" style="margin-top: 0.2em;">Bundesverband</p>
-    <p id="DE-BW">Baden-Württemberg</p>
-	<p id="DE-BY">Bayern</p>
-	<p id="DE-BE">Berlin</p>
-	<p id="DE-BB">Brandenburg</p>
-	<p id="DE-HB">Bremen</p>
-	<p id="DE-HH">Hamburg</p>
-	<p id="DE-HE">Hessen</p>
-	<p id="DE-MV">Mecklenburg-Vorpommern</p>
-	<p id="DE-NI">Niedersachsen</p>
-	<p id="DE-NW">Nordrhein-Westfalen</p>
-	<p id="DE-RP">Rheinland-Pfalz</p>
-	<p id="DE-SL">Saarland</p>
-	<p id="DE-SN">Sachsen</p>
-	<p id="DE-ST">Sachsen-Anhalt</p>
-	<p id="DE-SH">Schleswig-Holstein</p>
-	<p id="DE-TH" class="bar">Thüringen</p>
-	<p id="Ausland">Ausland</p>
-  </div>
-  <div class="chartspacer"></div>
+ <!--
+ <div class="button-bar" style="margin-bottom: 2px">
+  <a class="button icon-left ion-checkmark-circled" id="V:2" href="#//V" tag="BEO-verifizierte">Verifiziert</a>
+  <a class="button icon-left ion-pie-graph" id="Q:2" href="#//Q">Zahlquote</a>
  </div>
- <script>window.plotSelection = "MBundesverband";</script>
- <script type="text/javascript" src="braten.js"></script>
- <p id="footer">*basierend auf der <a href="https://github.com/sbeyer/Piratistiken">Entwicklung</a> der <a href="http://finanzen.piratenpartei.de/statistik.php">Mitgliederzahlen</a> der letzten 30 Tage</p>
+ -->
+ <div class="button-bar" style="margin-bottom: 2px">
+  <a class="button icon-left ion-arrow-graph-down-right selected" id="R:3" href="#///R">Relativ</a>
+  <a class="button icon-left ion-stats-bars" id="A:3" href="#///A">Absolut</a>
+ </div>
+ <div class="list" id="Gliederung">
+  <a class="item selected" id="Bundesverband:1" href="#/Bundesverband/" tag="Deutschland">Bundesverband</a>
+  <a class="item" id="DE-BW:1" href="#/DE-BW/">Baden-W&uuml;rttemberg</a>
+  <a class="item" id="DE-BY:1" href="#/DE-BY/">Bayern</a>
+  <a class="item" id="DE-BE:1" href="#/DE-BE/">Berlin</a>
+  <a class="item" id="DE-BB:1" href="#/DE-BB/">Brandenburg</a>
+  <a class="item" id="DE-HB:1" href="#/DE-HB/">Bremen</a>
+  <a class="item" id="DE-HH:1" href="#/DE-HH/">Hamburg</a>
+  <a class="item" id="DE-HE:1" href="#/DE-HE/">Hessen</a>
+  <a class="item" id="DE-MV:1" href="#/DE-MV/">Mecklenburg-Vorpommern</a>
+  <a class="item" id="DE-NI:1" href="#/DE-NI/">Niedersachsen</a>
+  <a class="item" id="DE-NW:1" href="#/DE-NW/">Nordrhein-Westfalen</a>
+  <a class="item" id="DE-RP:1" href="#/DE-RP/">Rheinland-Pfalz</a>
+  <a class="item" id="DE-SL:1" href="#/DE-SL/">Saarland</a>
+  <a class="item" id="DE-SN:1" href="#/DE-SN/">Sachsen</a>
+  <a class="item" id="DE-ST:1" href="#/DE-ST/">Sachsen-Anhalt</a>
+  <a class="item" id="DE-SH:1" href="#/DE-SH/">Schleswig-Holstein</a>
+  <a class="item" id="DE-TH:1" href="#/DE-TH/">Th&uuml;ringen</a>
+  <a class="item" id="Ausland:1" href="#/Ausland/" tag="im Ausland">Ausland</a>
+ </div>
 </div>
+
+<div id="container" class="transition">
+ <header class="bar bar-header nav-bar bar-stable">
+  <button id="btn-menu" class="button button-icon"><i class="ion-navicon-round"></i></button>
+  <h1 id="pagetitle" class="title">Wieviele Mitglieder hat die Piratenpartei Deutschland?</h1>
+ </header>
+ <div id="counterblock">
+  <div class="counter" id="d1"><div class="counter-bg"></div><div class="num">0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0</div></div><div class="counter" id="d2"><div class="counter-bg"></div><div class="num">0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0</div></div><div class="counter" id="d3"><div class="counter-bg"></div><div class="num">0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0</div></div><div class="counter" id="d4"><div class="counter-bg"></div><div class="num">0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0</div></div><div class="counter" id="d5"><div class="counter-bg"></div><div class="num">0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0</div></div><div class="counter" style="font-size:80px; width: auto;">,</div><div class="counter counter-semi" id="d6"><div class="counter-bg"></div><div class="num">0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0</div></div><div class="counter counter-semi" id="d7"><div class="counter-bg"></div><div class="num">0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0</div></div><div class="counter counter-semi" id="d8"><div class="counter-bg"></div><div class="num">0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0</div></div>
+ </div>
+ <div id="content" class="with-3d-shadow with-transitions"><svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 960 500"></svg></div>
+ <div class="bar bar-footer bar-stable">
+  <div class="title">Der Z&auml;hler basiert auf der <a href="https://github.com/sbeyer/Piratistiken">Entwicklung</a> der <a href="http://finanzen.piratenpartei.de/statistik.php">Mitgliederzahlen</a> der letzten 30 Tage</div>
+ </div>
+</div>
+
+<script src="lib/lab-2.0.3/LAB.min.js"></script>
+<script>
+ $LAB
+  .script("lib/jquery-2.1.4.min.js")
+  .script("lib/d3/d3.min.js")
+  .wait()
+  .script("loaddata.js")
+  .script("js/braten.js")
+  .script("js/counter.js")
+  .script("lib/fastclick-1.0.6.js");
+</script>
 </body></html>
