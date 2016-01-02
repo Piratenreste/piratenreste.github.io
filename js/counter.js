@@ -33,6 +33,7 @@ function counter_setNumber(n, all, smooth) {
 function estimatePirates(all, smooth) {
  now = new Date() / 1000;
  n = window.estimate_intercept + (window.estimate_coefficient * now);
+ if (n < 0) { n = 0; };
  counter_setNumber(n, all, smooth);
 }
 function extrapolate_counter(selection, smooth) {
