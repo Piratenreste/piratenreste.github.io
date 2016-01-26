@@ -192,7 +192,11 @@ function brushed(smooth) {
  })
  extent = d3.extent(dataFiltered.map(function(d) { return d[window.plotSelection]; }));
  if (window.baseline > 0) {
-  y.domain([0, extent[1]]);
+  if (window.baseline_override > 0) {
+   y.domain([0, window.baseline_override]);
+  } else {
+   y.domain([0, extent[1]]);
+  }
  } else {
   y.domain([Math.max(0, extent[0] - 10), extent[1] + 10]);
  }
@@ -219,6 +223,7 @@ function updatePlot() {
 window.primaryColor="#F80";
 window.secondaryColor="#FC8";
 window.baseline=0;
+window.baseline_override=0;
 function updatecolors() {
  for (var s = 0; s < document.styleSheets.length; s++) {
   for (var i = 0; i < document.styleSheets[s].cssRules.length; i++) {
@@ -272,21 +277,25 @@ function updatecolors() {
 					case 'Z':
 						window.primaryColor="#808";
 						window.secondaryColor="#C8C";
+						window.baseline_override=0;
 						updatecolors();
 						break;
 					case 'A':
 						window.primaryColor="#F80";
 						window.secondaryColor="#FC8";
+						window.baseline_override=0;
 						updatecolors();
 						break;
 					case 'V':
 						window.primaryColor="#360";
 						window.secondaryColor="#9C8";
+						window.baseline_override=0;
 						updatecolors();
 						break;
 					case 'Q':
 						window.primaryColor="#4682B4";
 						window.secondaryColor="#8CF";
+						window.baseline_override=100;
 						updatecolors();
 						break;
 				}
@@ -368,7 +377,7 @@ function updatecolors() {
 		switch (setting[2]) {
 			case 'A': window.plotSelection = "M" + setting[1]; break;
 			case 'Z': window.plotSelection = "S" + setting[1]; break;
-			case 'V': window.plotSelection = "V" + setting[1]; break;
+			default: window.plotSelection = setting[2] + setting[1]; break;
 		}
 		if (window.data != undefined) {
 			if (window.lastplotSelection != window.plotSelection) {
