@@ -368,6 +368,7 @@ function updatecolors() {
 		switch (setting[2]) {
 			case 'A': window.plotSelection = "M" + setting[1]; break;
 			case 'Z': window.plotSelection = "S" + setting[1]; break;
+			case 'V': window.plotSelection = "V" + setting[1]; break;
 		}
 		if (window.data != undefined) {
 			if (window.lastplotSelection != window.plotSelection) {

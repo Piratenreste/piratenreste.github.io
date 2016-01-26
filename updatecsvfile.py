@@ -11,11 +11,13 @@ parsed = {}
 for land in landliste:
   parsed['M%s' % land] = []
   parsed['S%s' % land] = []
+  parsed['V%s' % land] = []
   with open('git/%s.txt' % land, 'r') as file:
     for line in file:
-      m = re.search('^([0-9]{4})([0-9]{2})([0-9]{2})\s(([0-9]+)?\s([0-9]+)?)?', line)
+      m = re.search('^([0-9]{4})([0-9]{2})([0-9]{2})\s(([0-9]+)?\s([0-9]+)?(\s[0-9]+\s([0-9]+))?)?', line)
       if m:
-        year, month, day, members, voting = m.group(1), m.group(2), m.group(3), m.group(5), m.group(6)
+        year, month, day, members, voting, beo = m.group(1), m.group(2), m.group(3), m.group(5), m.group(6), m.group(8)
+#       print land, year, month, day, members, voting, beo
 	date = '%s-%s-%s' % (year, month, day)
 	timestamp = int(time.mktime(time.strptime(date, dateformat)))
 	if members is not None:
@@ -24,9 +26,13 @@ for land in landliste:
 	if voting is not None:
 	  if ((len(parsed['S%s' % land]) == 0) or (parsed['S%s' % land][-1][0] != timestamp)):
 	    parsed['S%s' % land].append((timestamp, date, int(voting)))
+	if beo is not None:
+	  if ((len(parsed['V%s' % land]) == 0) or (parsed['V%s' % land][-1][0] != timestamp)):
+	    parsed['V%s' % land].append((timestamp, date, int(beo)))
 
 l2 = dict(('M%s' % land, 'M%s' % laender[land]) for land in landliste)
 l2.update(('S%s' % land, 'S%s' % laender[land]) for land in landliste)
+l2.update(('V%s' % land, 'V%s' % laender[land]) for land in landliste)
 laender = l2
 landliste = sorted(laender.iterkeys())
 
@@ -74,5 +80,6 @@ with open('estimate.csv', 'w') as e:
           interpolated[n] = interpolate(parsed[n][state[n]][2], parsed[n][next_values[n]][2],
 	                                parsed[n][state[n]][0], parsed[n][next_values[n]][0], mindate)
 #   print "T: %s: %s" % (newdate, str(interpolated))
-    e.write("%s,%s\n" % (newdate,
-      ','.join([str(interpolated[land]) for land in landliste])))
+    line = "%s,%s\n" % (newdate,
+      ','.join([str(interpolated[land]) for land in landliste]))
+    e.write(line.replace(',0', ','))
