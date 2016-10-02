@@ -17,7 +17,6 @@ d3.csv("estimate.csv",
  },
  function(error, data) {
   window.data = data;
-  start_counter();
   enable_draw(0);
   d3.csv("mandate.csv",
    function(d) {
@@ -55,6 +54,7 @@ d3.csv("estimate.csv",
       if ((index + 1) < indexlen) nextdata = data2[index+1];
     }
     console.log('done');
+    start_counter();
     enable_draw(1);
    }
   );
