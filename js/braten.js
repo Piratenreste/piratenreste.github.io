@@ -46,9 +46,12 @@ var context = svg.append("g")
     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
 
-function enable_draw() {
+function enable_draw(source) {
+  if (('T'.indexOf(window.plotSelection[0]) > -1) && (source != 1)) { return; }
+  if (('MSVQ'.indexOf(window.plotSelection[0]) > -1) && (source != 0)) { return; }
+
   x.domain(d3.extent(data.map(function(d) { return d.date; })));
-  y.domain([0, d3.max(data.map(function(d) { return d[window.plotSelection]; }))]);
+  y.domain([0, Math.max(1, d3.max(data.map(function(d) { return d[window.plotSelection]; })))]);
   x2.domain(x.domain());
   y2.domain(y.domain());
 
@@ -195,10 +198,10 @@ function brushed(smooth) {
   if (window.baseline_override > 0) {
    y.domain([0, window.baseline_override]);
   } else {
-   y.domain([0, extent[1]]);
+   y.domain([0, Math.max(1, extent[1])]);
   }
  } else {
-  y.domain([Math.max(0, extent[0] - 10), extent[1] + 10]);
+  y.domain([Math.max(0, extent[0] - 10), Math.max(1, extent[1] + 10)]);
  }
  if (smooth) {
   focus.select(".area").transition().duration(400).attr("d", area).style("fill", window.primaryColor);
@@ -216,7 +219,7 @@ function brushed(smooth) {
 function updatePlot() {
  area.y1(function(d) { return y(d[window.plotSelection]); });
  area2.y1(function(d) { return y2(d[window.plotSelection]); });
- y2.domain([0, d3.max(data.map(function(d) { return d[window.plotSelection]; }))]);
+ y2.domain([0, Math.max(1, d3.max(data.map(function(d) { return d[window.plotSelection]; })))]);
  brushed(true);
 }
 
@@ -298,6 +301,18 @@ function updatecolors() {
 						window.baseline_override=100;
 						updatecolors();
 						break;
+					case 'T':
+						window.primaryColor="#800";
+						window.secondaryColor="#C89";
+						window.baseline_override=0;
+						updatecolors();
+						break;
+					case 'K':
+						window.primaryColor="#188";
+						window.secondaryColor="#8CC";
+						window.baseline_override=0;
+						updatecolors();
+						break;
 				}
 				break;
 			case 3:
@@ -366,7 +381,7 @@ function updatecolors() {
 		var lvname = "tag" in lv.attributes ? lv.getAttribute("tag") : lv.textContent;
 		var status = document.getElementById(setting[2] + ":" + 2);
 		var statusname = "tag" in status.attributes ? status.getAttribute("tag") : "";
-		$("#pagetitle").html("Wieviele <span>" + statusname + " Mitglieder</span> hat die <span>Piratenpartei " + lvname + "</span>?");
+		$("#pagetitle").html("Wieviele <span>" + statusname + "</span> hat die <span>Piratenpartei " + lvname + "</span>?");
 
 		for (var i = 0; i < defaultsetting.length; i++) {
 			if ((window.lastsetting == undefined) ||

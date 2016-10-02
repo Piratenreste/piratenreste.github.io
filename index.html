@@ -10,12 +10,16 @@
 <div id="left-nav">
  <div class="title">Piratenmitglieder</div>
  <div class="button-bar">
-  <a class="button icon-left selected ion-person-stalker" id="A:2" href="#//A">Alle</a>
-  <a class="button icon-left ion-card" id="Z:2" href="#//Z" tag="zahlende">Zahlend</a>
+  <a class="button icon-left selected ion-person-stalker" id="A:2" href="#//A" tag="Mitglieder">Alle</a>
+  <a class="button icon-left ion-card" id="Z:2" href="#//Z" tag="zahlende Mitglieder">Zahlend</a>
+ </div>
+ <div class="button-bar">
+  <a class="button icon-left ion-checkmark-circled" id="V:2" href="#//V" tag="BEO-verifizierte Mitglieder">Verifiziert</a>
+  <a class="button icon-left ion-pie-graph" id="Q:2" href="#//Q" tag="Prozent zahlende Mitglieder">Zahlquote</a>
  </div>
  <div class="button-bar" style="margin-bottom: 2px">
-  <a class="button icon-left ion-checkmark-circled" id="V:2" href="#//V" tag="BEO-verifizierte">Verifiziert</a>
-  <a class="button icon-left ion-pie-graph" id="Q:2" href="#//Q" tag="Prozent zahlende">Zahlquote</a>
+  <a class="button icon-left ion-ios-people" id="T:2" href="#//T" tag="Abgeordnete">Mandate</a>
+  <a class="button icon-left ion-ios-people-outline" id="K:2" href="#//K" tag="kommunale Mandatsträger" style="display:none">Kommunal</a>
  </div>
  <div class="button-bar" style="margin-bottom: 2px">
   <a class="button icon-left ion-arrow-graph-down-right selected" id="R:3" href="#///R">Relativ</a>
@@ -60,8 +64,8 @@
 <script src="lib/lab-2.0.3/LAB.min.js"></script>
 <script>
  $LAB
-  .script("lib/jquery-2.1.4.min.js")
-  .script("lib/d3/d3.min.js")
+  .script("lib/jquery-2.2.4.min.js")
+  .script("lib/d3/d3.3.5.17.min.js")
   .wait()
   .script("loaddata.js")
   .script("js/braten.js")
