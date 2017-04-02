@@ -47,6 +47,7 @@ var context = svg.append("g")
 
 
 function enable_draw(source) {
+  if (('K'.indexOf(window.plotSelection[0]) > -1) && (source != 2)) { return; }
   if (('T'.indexOf(window.plotSelection[0]) > -1) && (source != 1)) { return; }
   if (('MSVQ'.indexOf(window.plotSelection[0]) > -1) && (source != 0)) { return; }
 
