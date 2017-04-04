@@ -228,6 +228,7 @@ window.primaryColor="#F80";
 window.secondaryColor="#FC8";
 window.baseline=0;
 window.baseline_override=0;
+window.footer_content=0;
 function updatecolors() {
  for (var s = 0; s < document.styleSheets.length; s++) {
   for (var i = 0; i < document.styleSheets[s].cssRules.length; i++) {
@@ -243,6 +244,20 @@ function updatecolors() {
     }
    }
   }
+ }
+}
+
+function updatefooter(content) {
+ if (window.footer_content != content) {
+  newtext = 'Der Z&auml;hler basiert auf der <a href="https://github.com/sbeyer/Piratistiken">Entwicklung</a> der <a href="http://finanzen.piratenpartei.de/statistik.php">Mitgliederzahlen</a> der letzten 30 Tage';
+  if (content == 2) {
+    newtext = 'Der Z&auml;hler basiert auf der <a href="https://github.com/emtiu/piratenmandate">Entwicklung</a> der <a href="http://www.kommunalpiraten.de/">Mandatszahlen</a> der letzten 30 Tage';
+  };
+  $('.bar-footer .title').fadeOut(200, function(){
+    $('.bar-footer .title').html(newtext);
+    $('.bar-footer .title').fadeIn(200);
+  });
+  window.footer_content = content;
  }
 }
 
@@ -283,36 +298,42 @@ function updatecolors() {
 						window.secondaryColor="#C8C";
 						window.baseline_override=0;
 						updatecolors();
+						updatefooter(0);
 						break;
 					case 'A':
 						window.primaryColor="#F80";
 						window.secondaryColor="#FC8";
 						window.baseline_override=0;
 						updatecolors();
+						updatefooter(0);
 						break;
 					case 'V':
 						window.primaryColor="#360";
 						window.secondaryColor="#9C8";
 						window.baseline_override=0;
 						updatecolors();
+						updatefooter(0);
 						break;
 					case 'Q':
 						window.primaryColor="#4682B4";
 						window.secondaryColor="#8CF";
 						window.baseline_override=100;
 						updatecolors();
+						updatefooter(0);
 						break;
 					case 'T':
 						window.primaryColor="#800";
 						window.secondaryColor="#C89";
 						window.baseline_override=0;
 						updatecolors();
+						updatefooter(0);
 						break;
 					case 'K':
 						window.primaryColor="#188";
 						window.secondaryColor="#8CC";
 						window.baseline_override=0;
 						updatecolors();
+						updatefooter(2);
 						break;
 				}
 				break;
